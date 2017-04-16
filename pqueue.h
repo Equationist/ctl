@@ -89,10 +89,12 @@ T TEMPLATE(T, pqueue_pop) (TEMPLATE(T, pqueue) *this)
     }
     if (this->length < (this->size / 4))
     {
-        T* newdata = malloc(sizeof(T) * (this->size / 2));
+        size_t newsize = this->size / 2;
+        T* newdata = malloc(sizeof(T) * newsize);
         if (newdata)
         {
-            memcpy(newdata, this->data, sizeof(T)*(this->length));
+            this->size = newsize;
+            memcpy(newdata, this->data, sizeof(T)*this->length);
             free(this->data);
             this->data = newdata;
         }
