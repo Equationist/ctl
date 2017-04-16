@@ -6,11 +6,11 @@
 #include <stdio.h>
 #include <assert.h>
 
-#define T int
 static inline int int_compare(int x, int y)
 {
     return (x>y) - (y>x);
 }
+#define T int
 #include "pqueue.h"
 
 int pqueue_test()
